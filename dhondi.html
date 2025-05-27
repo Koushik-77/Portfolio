@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Photo Search with Nature</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <style>
+    :root {
+      --mouse-x: 50vw;
+      --mouse-y: 50vh;
+    }
+
+    body {
+      cursor: none;
+      overflow-x: hidden;
+      background: radial-gradient(circle at center, #87CEEB, #4682B4);
+      transition:  0.5s ease;
+    }
+
+    .dark body {
+      background: radial-gradient(circle at center, #1a1b1e, #0d0e10);
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s linear;
+      mix-blend-mode: difference;
+    }
+
+    .dark .custom-cursor {
+      background: #0ff;
+      box-shadow: 0 0 16px 6px rgba(0, 255, 255, 0.6);
+    }
+
+    /* Nature Scene */
+    .nature-scene {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Sky Animation */
+    .sky {
+      position: absolute;
+      width: 100%;
+      height: 70%;
+      animation: skyAnimation 60s infinite linear;
+    }
+
+    /* Sun Animation */
+    .sun {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffd700, #ff4500);
+      box-shadow: 0 0 50px 20px rgba(255, 215, 0, 0.3);
+      animation: sunAnimation 60s infinite linear;
+    }
+
+    /* Road */
+    .road {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: #333;
+    }
+
+    .road::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, 
+        transparent 0 40px,
+        #fff 40px 80px
+      );
+      animation: roadLine 2s infinite linear;
+    }
+
+    /* Walking Person */
+    .person {
+      position: absolute;
+      bottom: 30%;
+      left: 10%;
+      width: 80px;
+      height: 120px;
+      background: url('https://i.ibb.co/4T0J3yX/walk-sprite.png');
+      animation: walk 1s steps(8) infinite, moveForward 20s linear infinite;
+    }
+
+    /* Moving Cars */
+    .car {
+      position: absolute;
+      width: 120px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .car-1 {
+      background-image: url('https://i.ibb.co/7pX3y6y/car1.png');
+      animation: carMove 12s infinite linear;
+      bottom: 25%;
+    }
+
+    .car-2 {
+      background-image: url('https://i.ibb.co/Lx9kYhJ/car2.png');
+      animation: carMove 8s infinite linear;
+      bottom: 20%;
+    }
+
+    /* Keyframes */
+    @keyframes skyAnimation {
+      0% { background: linear-gradient(to bottom, #000428, #004e92); }
+      25% { background: linear-gradient(to bottom, #ff6b6b, #ffd93d); }
+      50% { background: linear-gradient(to bottom, #4b79cf, #283e51); }
+      75% { background: linear-gradient(to bottom, #93278f, #00a8c5); }
+      100% { background: linear-gradient(to bottom, #000428, #004e92); }
+    }
+
+    @keyframes sunAnimation {
+      0% { transform: translate(-50%, 100%); opacity: 0; }
+      25% { transform: translate(25%, 50%); opacity: 1; }
+      50% { transform: translate(50%, 30%); opacity: 1; }
+      75% { transform: translate(75%, 50%); opacity: 1; }
+      100% { transform: translate(150%, 100%); opacity: 0; }
+    }
+
+    @keyframes roadLine {
+      from { transform: translateX(-40px); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes walk {
+      100% { background-position: -640px 0; }
+    }
+
+    @keyframes moveForward {
+      100% { left: 100%; }
+    }
+
+    @keyframes carMove {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+
+    /* Original Waves */
+    .waves-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .wave {
+      position: absolute;
+      width: 300%;
+      height: 100%;
+      background-repeat: repeat-x;
+      background-size: contain;
+      animation: moveWaves 15s linear infinite;
+      opacity: 0.2;
+    }
+
+    .wave1 {
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%236be3ff" d="M0,96L80,101.3C160,107,320,117,480,128C640,139,800,149,960,144C1120,139,1280,117,1360,106.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"/></svg>');
+    }
+
+    .wave2 {
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23a855f7" d="M0,128L120,112C240,96,480,64,720,85.3C960,107,1200,181,1320,218.7L1440,256L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"/></svg>');
+      animation-duration: 20s;
+      opacity: 0.25;
+    }
+
+    .wave3 {
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f43f5e" d="M0,64L120,106.7C240,149,480,235,720,229.3C960,224,1200,128,1320,80L1440,32L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"/></svg>');
+      animation-duration: 25s;
+      opacity: 0.2;
+    }
+
+    @keyframes moveWaves {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-33%); }
+    }
+
+    /* Search Interface */
+    .search-container {
+      position: relative;
+      z-index: 20;
+      padding: 2.5rem 1.5rem;
+      width: 100%;
+      max-width: 32rem;
+      border-radius: 1.5rem;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .search-container:hover {
+      transform: scale(1.01);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .person { transform: scale(0.7); }
+      .car { transform: scale(0.8); }
+      .sun { width: 60px; height: 60px; }
+      .search-container { margin: 1rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+  <!-- Nature Scene -->
+  <div class="nature-scene">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="road"></div>
+    <div class="person"></div>
+    <div class="car car-1"></div>
+    <div class="car car-2"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div id="customCursor" class="custom-cursor"></div>
+
+  <!-- Theme Toggle -->
+  <button onclick="toggleTheme()" class="fixed top-5 right-5 px-4 py-2 bg-white text-blue-800 font-bold rounded-lg shadow-md hover:bg-gray-100 z-30 dark:bg-gray-800 dark:text-white transition-all">
+    Toggle Theme
+  </button>
+
+  <!-- Waves -->
+  <div class="waves-container">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <!-- Search Interface -->
+  <div class="search-container">
+    <h2 class="text-4xl font-bold mb-6 text-center">🔍 Search Student Photo</h2>
+    
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <input
+        type="text"
+        id="studentId"
+        placeholder="Enter Student ID"
+        class="w-full px-4 py-3 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-cyan-400 dark:text-white bg-white/80 dark:bg-gray-800/70 transition"
+      />
+      <button
+        onclick="showPhoto()"
+        class="px-5 py-2 bg-white text-blue-700 font-semibold rounded-xl hover:bg-gray-200 active:scale-95 transition duration-150 dark:bg-purple-700 dark:text-white dark:hover:bg-purple-600"
+      >
+        Search
+      </button>
+    </div>
+
+    <div id="photo-container" class="mt-8 space-y-4 text-center">
+      <p id="photo-label" class="text-lg font-medium hidden">Result:</p>
+      <img id="photo" src="" alt="Student Photo"
+           class="rounded-xl border-4 border-white mx-auto hidden max-w-xs shadow-xl transition-all duration-700 scale-95 opacity-0"/>
+      <p id="error" class="text-red-200 font-semibold"></p>
+    </div>
+  </div>
+
+  <script>
+    // Cursor Logic
+    document.addEventListener("mousemove", (e) => {
+      document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+      const cursor = document.getElementById("customCursor");
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+
+    // Theme Toggle
+    function toggleTheme() {
+      const root = document.documentElement;
+      const natureScene = document.querySelector('.nature-scene');
+      
+      root.classList.toggle('dark');
+      natureScene.style.display = root.classList.contains('dark') ? 'none' : 'block';
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    // Initialize Theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.querySelector('.nature-scene').style.display = 'none';
+    }
+
+    // Photo Search Logic
+    function showPhoto() {
+      const id = document.getElementById("studentId").value.trim();
+      const photo = document.getElementById("photo");
+      const label = document.getElementById("photo-label");
+      const error = document.getElementById("error");
+
+      if (!id) {
+        error.textContent = "❌ Please enter a student ID.";
+        photo.classList.add("hidden");
+        label.classList.add("hidden");
+        return;
+      }
+
+      const photoUrl = `https://dhondi.cmrithyderabad.edu.in/sharedfiles/e0d341de643812c29a19aac35b9e7d87/studentPhotos/${id}.jpg`;
+
+      photo.classList.remove("opacity-100", "scale-100");
+      photo.classList.add("opacity-0", "scale-95", "hidden");
+      photo.src = photoUrl;
+
+      photo.onload = function () {
+        error.textContent = "";
+        label.classList.remove("hidden");
+        photo.classList.remove("hidden");
+
+        setTimeout(() => {
+          photo.classList.remove("opacity-0", "scale-95");
+          photo.classList.add("opacity-100", "scale-100");
+        }, 50);
+      };
+
+      photo.onerror = function () {
+        photo.classList.add("hidden");
+        label.classList.add("hidden");
+        error.textContent = "❌ No photo found for this ID.";
+      };
+    }
+  </script>
+</body>
+</html>
