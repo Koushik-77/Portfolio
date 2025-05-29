@@ -14,10 +14,7 @@ import ChefApp from "./claudechef/App";
 
 function AppContent() {
   const location = useLocation();
-
-  // Show navbar & menu only on "/" route
   const showNavbar = location.pathname === "/";
-
   return (
     <>
       {showNavbar && (
@@ -26,7 +23,6 @@ function AppContent() {
           <MobileMenu />
         </>
       )}
-
       <Routes>
         <Route
           path="/"
