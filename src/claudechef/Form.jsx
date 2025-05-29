@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ClaudeRecipe from "./claudeRecipe";
 import IngredeintList from "./IngredientList";
-import { getRecipeFromMistral } from './ai'
+import { getRecipeFromGroq } from './ai'
 
 
 
@@ -27,7 +27,7 @@ export default function Form() {
   const [recipe, setRecipe] = useState("")
 
   async function GetRecipe() {
-    const recipeMarkDown = await getRecipeFromMistral(items)
+    const recipeMarkDown = await getRecipeFromGroq(items)
     setRecipe(recipeMarkDown)
   }
 
