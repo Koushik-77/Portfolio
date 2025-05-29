@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+.chefclaude body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #FAFAF8;
+}
+
+.chefclaude header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  gap: 7px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.chefclaude header > h1 {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.chefclaude header > img {
+  margin-top: 3px;
+  width: 25px;
+  height: 30px;
+}
+
+.chefclaude main {
+  padding: 30px 30px 10px;
+}
+
+/* Centered heading */
+.chefclaude .heading {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Sub-headings (left-aligned by default) */
+.chefclaude h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Paragraphs */
+.chefclaude .welcomep {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.125rem;
+  color: #444;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+}
+
+/* Input Form */
+.chefclaude .input-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.chefclaude .input-form > input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 400px;
+}
+
+.chefclaude .input-form > button {
+  font-family: 'Inter', sans-serif;
+  border-radius: 6px;
+  border: none;
+  padding: 9px 13px;
+  background-color: #141413;
+  color: #FAFAF8;
+  width: 150px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chefclaude .input-form > button::before {
+  content: "+";
+  margin-right: 5px;
+}
+
+/* List Styling */
+.chefclaude .listt {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  max-width: 700px;
+  margin: 0 auto;
+  /* padding-left: 12rem; */
+}
+
+.chefclaude .listt ul {
+  
+  list-style: disc;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chefclaude .listt li {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Recipe Suggestion Box */
+.chefclaude .get-recipe-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #F0EFEB;
+    padding: 10px 12px;  
+    max-width: 750px;    
+    margin: 0 auto;    
+    margin-bottom: 10px;  
+}
+
+.chefclaude .get-recipe-container h3 {
+    font-size: 1rem;  
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.chefclaude .get-recipe-container p {
+    color: #6B7280;
+    font-size: 0.75rem; 
+    line-height: 16px;
+}
+
+.chefclaude .get-recipe-container button {
+    border: none;
+    border-radius: 6px;
+    background: #D17557;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    color: #FAFAF8;
+    padding: 6px 12px;          
+    font-family: Inter, sans-serif;
+    font-size: 0.75rem;         
+    cursor: pointer;
+}
+
+
+/* Suggested Recipe Container */
+.chefclaude .suggested-recipe-container {
+  color: #475467;
+  line-height: 28px;
+  font-size: 1.125rem;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #F0EFEB;
+  padding: 10px 12px;  
+    max-width: 750px; 
+}
+
+.chefclaude .suggested-recipe-container h2 {
+  text-align: center;
+}
+
+.chefclaude .suggested-recipe-container p,
+.chefclaude .suggested-recipe-container li {
+  text-align: left;
+}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Projects = () => {
     const projects = [
         {
@@ -9,9 +11,16 @@ export const Projects = () => {
         },
         {
             title: "Resume Builder",
-            description: "Developed a personal website for creating and customizing resumes with an interactive UI and responsive design.Implemented responsive design principles to ensure optimal viewing across devices, and added form validation to guide users through the resume creation process. Users can input details, preview, and download resumes in PDF format.",
+            description: "Chef Claude AI is like having your own personal chef in your pocket! Just tell it what ingredients you have, and it uses a smart AI model from Hugging Face to whip up recipe ideas tailored just for you. Whether you’re trying to use up leftovers or experiment with something new, Chef Claude AI is here to help you make tasty meals without any stress.",
             technologies: ["HTML", "CSS", "JavaScript", "Git"],
             link: "https://github.com/Koushik-77/Resume-Generator",
+            problemStatement: "Many users struggle with resume formatting. This project simplifies the process by providing an easy-to-use, template-based resume builder."
+        },
+        {
+            title: "Chef Claude Ai",
+            description: "Developed a personal website for creating and customizing resumes with an interactive UI and responsive design.Implemented responsive design principles to ensure optimal viewing across devices, and added form validation to guide users through the resume creation process. Users can input details, preview, and download resumes in PDF format.",
+            technologies: ["React (Vite)", "JavaScript", "AWS", "Git", "AI Integration"],
+            link: "https://github.com/Koushik-77/Chef-Claude-AI",
             problemStatement: "Many users struggle with resume formatting. This project simplifies the process by providing an easy-to-use, template-based resume builder."
         }
     ];
@@ -63,6 +72,16 @@ export const Projects = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </a>
+
+                            <Link 
+                                to="/chef"
+                                className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors ml-4"
+                                >
+                                Demo
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </Link>
                         </div>
                     ))}
                 </div>
