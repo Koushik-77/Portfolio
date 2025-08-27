@@ -1,16 +1,16 @@
 # 🌐 Koushik Teja Rachamalla - Portfolio
 
 This is my personal **portfolio website** built with **React + Vite** and styled with **Tailwind CSS**.  
-It showcases my projects, skills, and experience in software development.
+It highlights my projects, skills, and experience in software development.
 
 ---
 
 ## 🚀 Features
-- ⚡ Fast development with **Vite**
+- ⚡ Blazing fast development with **Vite**
 - 📱 Fully responsive design
 - 🎨 Styled with **Tailwind CSS**
-- 🧑‍💻 Showcases **skills, projects, and resume**
-- 🌍 Deployed on **Hostinger / AWS**
+- 🧑‍💻 Sections for **skills, projects, and resume**
+- 🌍 Deployed at [koushikteja.site](https://koushikteja.site)
 
 ---
 
