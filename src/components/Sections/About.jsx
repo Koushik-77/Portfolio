@@ -102,6 +102,17 @@ export const About = () => {
                                 </p>
                             </div>
                         </div>
+                        <div className="relative pl-6 before:absolute before:left-0 before:top-2 before:h-3 before:w-3 before:rounded-full before:bg-blue-400/80 before:ring-4 before:ring-blue-400/20">
+                            <h4 className="text-lg font-semibold text-white">
+                                DevOps Intern | EDUGENE
+                            </h4>
+                            <p className="text-sm text-blue-300/80 mb-2">
+                                2024 - 2025 | Hyderabad, India (On Site/Remote)
+                            </p>
+                            <p className="text-gray-300 leading-relaxed">
+                                Worked on CI/CD pipelines, cloud deployment, and automation using AWS, Docker, and Git. Assisted in monitoring applications and improving deployment workflows.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

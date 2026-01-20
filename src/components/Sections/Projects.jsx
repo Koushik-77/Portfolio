@@ -25,7 +25,16 @@ export const Projects = () => {
             link: "https://github.com/Koushik-77/Chef-Claude-AI",
             problemStatement: "Many users struggle with resume formatting. This project simplifies the process by providing an easy-to-use, template-based resume builder.",
             demolink:"chefclaude"
+        },
+        {
+            title: "QuizApp",
+            description: "Built a backend-driven quiz application to understand core Spring Boot concepts like REST APIs, controllers, services, repositories, and database integration. Implemented CRUD operations for questions, quiz creation logic, and score calculation based on user responses.",
+            technologies: ["Java", "Spring Boot", "REST APIs", "PostgreSQL.", "Postman"],
+            link: "https://github.com/Koushik-77/QuizApp",
+            problemStatement: "To learn and gain hands-on experience with Spring Boot by building a real-world backend application.",
+            demolink: "quizapp"
         }
+
     ];
 
     return (
