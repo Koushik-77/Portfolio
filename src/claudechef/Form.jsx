@@ -3,9 +3,6 @@ import ClaudeRecipe from "./claudeRecipe";
 import IngredeintList from "./IngredientList";
 import { getRecipeFromGroq } from './ai'
 
-
-
-
 export default function Form() {
   const [items, setItems] = useState([])
 
