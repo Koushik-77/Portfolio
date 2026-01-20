@@ -16,9 +16,13 @@ export async function getRecipeFromGroq(ingredientsArr) {
                 { role: "system", content: SYSTEM_PROMPT },
                 { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
             ],
-            model: "llama3-8b-8192", // or "llama2-70b-4096"
-            max_tokens: 1024,
-            temperature: 0.7,
+            "model": "openai/gpt-oss-120b",
+            "temperature": 1,
+            "max_completion_tokens": 8192,
+            "top_p": 1,
+            "stream": true,
+            "reasoning_effort": "medium",
+            "stop": null
         });
         
         return response.choices[0].message.content;
